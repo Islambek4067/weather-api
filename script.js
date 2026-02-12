@@ -9,6 +9,10 @@ const precipitation = document.querySelector('.precipitation')
 const getData = async () =>{
   const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,showers,wind_speed_10m,relative_humidity_2m,precipitation&models=icon_seamless&current=rain,showers,snowfall,precipitation&timezone=auto&wind_speed_unit=mph&precipitation_unit=inch')
   const data = await response.json()
+  wind.innerText = `${data.hourly.wind_speed_10m[0]} mph` 
+  humidity.innerText = `${data.hourly.relative_humidity_2m[0]} %`
+  precipitation.innerText = `${data.hourly.precipitation[0]} inch`
+  
 
   const currentDate = new Date();
   console.log(data);
